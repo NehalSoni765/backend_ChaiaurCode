@@ -1,0 +1,54 @@
+-> structure
+index -> db logic,
+app -> config,cookie,
+constant -> enums,db-enums
+folder = db,models(schema),controller,routes,middleware,utils
+
+deploy in production
+computer =><= server : sending request to server and set response from server to network using express
+
+fullstack connect frontend-backend
+{
+    - backend resolve cors issue import cors : app.use(cors()) or whitelisting cors({origin:"frontend"})
+    - frontend vite.config.js add server{proxy:{"/api":"backend"}}
+    - create build from frontend and put dist into backend
+      open server.js file and app.use(express.static("dist"))//build name in our case dist
+    - build not work in other cases like updating frontend and backend not propogating
+}
+
+taking backend to next level
+{- oveview to project, sample youtube (frontend+backend)}
+
+data modeling (app:datesen[paid], eraser())
+{
+    - moon modelor means field of data
+    - mongoose help in data modeling 
+    online editor (codesandbox, github codespaces,stackbitz)
+    {
+      import mongoose from "mongoose";
+      const userSchema = new mongoose.Schema({})
+      export const User = mongoose.model("User",userSchema); //"User" convert into users mongodb(small+plural)
+    }
+}
+ecommerce and hospital schema{
+    > todos{
+      user : name,email,password
+      todo : content,complete,createdBy(user),subTodos([subTodo])
+      subTodo: title,complete,createdBy(user)
+    }
+    > ecommerce{
+      user : name,email,pass
+      category : name,
+      product : name,description,image,price,stock,owner(user),category(category)
+      order : orderPrice,address,orderItem([{productId(product),qnt}]),customer(user),status(enum[pending,deliver,cancel])
+    } 
+    > hospitals{
+      patient : name,age,bloodgroup,gender,address,diagnosedWith,admittedIn(hospital)
+      doctor : name,qualification,salary,experiance,workInHospitals([hospitalId(hospital)]),workHoursInHospital([{hospitalId(hospital),hours}])
+      hospitals : name,addressline1,addressline2,city,pincode,specializedIn([""])
+    }
+}
+now start
+setup professional backend {
+
+}
