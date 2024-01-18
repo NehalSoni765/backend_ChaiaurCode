@@ -50,5 +50,7 @@ ecommerce and hospital schema{
 }
 now start
 setup professional backend {
-
+  - folder : controllers,db,middlewares,routes,models,utils
+  - file : index,constants,app
+  - nodemon install package.json (dev:nodemon src/index.js)
 }
