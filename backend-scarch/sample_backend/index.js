@@ -1,6 +1,7 @@
 const expres = require("express");
 // import express from "express";
 require("dotenv").config();
+// require("dotenv").config("./env");
 
 const app = expres();
 const port = 3000;

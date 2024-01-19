@@ -54,3 +54,12 @@ setup professional backend {
   - file : index,constants,app
   - nodemon install package.json (dev:nodemon src/index.js)
 }
+connect database in mern debugging {
+  (db in always another continator)
+  - mongodb atlas (login with nehalsoni.it>network access,database access,database(development))
+  - databse > connect button > campus > copy connection url "mongodb+srv://nehalsoniit:<password>@cluster0.cyj5jgl.mongodb.net/"
+  - remove last slash from url and update passowrd
+  - import file name should be "./constants.js"
+  - 1) wrap mongodb into (async()=>try catch )()and async await
+  - 2) open db folder>index.js = try-catch fucntion connectdb(){await moongose.connect("url"+/"dbname")} catch(err)=>process.exit(1) and put into main index.js
+}
