@@ -72,7 +72,7 @@ custom api response and error handline{
   - asyncHandler(utils)
   - ApiError(utils) override : class ApiError extended Error 
 }
-user-video model and jwt token{
+9] user-video model and jwt token{
   - user : username,email,password,fullName,avatar,coverImage,watchHostory(video),refToken
   - video : videoFile,title,description,duration,views,isPublished,thumbnail,owner
     aggregation query on video : npm i mongoose-aggregate-paginate-v2
@@ -81,4 +81,41 @@ user-video model and jwt token{
     encrypt password before store intodb that use userSchema.pre()
     validating passowrd userSchema.methods.isPasswordCorrect(async(pass)=>return await bcrypt.compare(pass,this.pass))
     acceess_Token_Expiry < refresh_Token_Expiry in env file
+}
+10] upload file{
+  - cloudinary.com for upload image into third party : npm i cloudinary
+  - multer/express-fileupload : upload
+  - fs is file system given by nodejs 
+  steps: {
+    > take file from user and store temp into local
+    > take file from local and store into cloudinary 
+  }
+  uploadOnCloudinary(util cloudinary) : take localpath and just copy uploadCode from cloudinary and paste async-await with try-catch and catch fs.unlinkSync(localpath) return null
+  middleware {
+    multer.middleware.js(https://www.npmjs.com/package/multer) 
+    multer.diskstorage({destination:(req,file,cb)=>cb(null,"./public,temp), fileName:(req,res,cb)=>cb(null,file.originalname)})
+  }
+}
+11] http creash course {
+  - http : hyper text transfer protocol
+  - http/https = send same string/encrypt string
+  - URL : Unifirm resource locator
+  - URI : uniform resource 
+  - URN : uniform resource
+  - meta data = headers are in key-pair values 
+  - most common {
+    > accept : application/json
+    > user-agent : operating system (postman,browse) check request comes from
+    > Authorization : 
+    > COntent-type
+    > cookie
+    > cache-control
+  }
+  cors : access-control-allow-[origin/credantial/method]
+  security : access-control-allow-[origin/credantial/method]
+}
+12] router and controller {
+    - user.controller.js const reg = asyncHandler((req,res)=>res.status(200).json({message:"ok"}))
+    - router : const router = Router(); router.get("/register,ref());
+    - app : import userRouter from "./router/user.routes.js";app.use("/user",userRouter)
 }
