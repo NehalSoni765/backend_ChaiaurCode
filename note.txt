@@ -62,4 +62,13 @@ connect database in mern debugging {
   - import file name should be "./constants.js"
   - 1) wrap mongodb into (async()=>try catch )()and async await
   - 2) open db folder>index.js = try-catch fucntion connectdb(){await moongose.connect("url"+/"dbname")} catch(err)=>process.exit(1) and put into main index.js
+  process.exit(1) immidiate exit even async-await, ()() immidiate invoke function
+}
+custom api response and error handline{
+  - first connect db then connect port
+  - app export as name
+  - app used int cors({origin}),cookieParser(),express.json({limit}),express.urlencoded({extended}),express.static("dist")
+  - example /instagram ->[user login(middleware)]->[(middleware)]=>get response and return res to this url
+  - asyncHandler(utils)
+  - ApiError(utils) override : class ApiError extended Error 
 }
