@@ -25,7 +25,6 @@ const userSchema = mongoose.Schema(
       trim: true,
       index: true, //searching field
     },
-    watchVideos: [],
     avatar: {
       type: String, //cloudinary Image profile
       required: true,
@@ -33,7 +32,7 @@ const userSchema = mongoose.Schema(
     coverImage: {
       type: String, //cloudinary Image background
     },
-    watchHostory: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
+    watchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
     password: {
       type: String,
       required: [true, "Password is required"],
@@ -48,7 +47,7 @@ const userSchema = mongoose.Schema(
 //encrypt password before store intodb
 userSchema.pre("save", async (next) => {
   if (!this.isModified("password")) return next();
-  this.password = bycrypt.hash(this.password, 10);
+  this.password = await bycrypt.hash(this.password, 10);
   next();
 });
 

@@ -119,3 +119,15 @@ custom api response and error handline{
     - router : const router = Router(); router.get("/register,ref());
     - app : import userRouter from "./router/user.routes.js";app.use("/user",userRouter)
 }
+13] Logic building {
+    - steps {
+        get user from frontend
+        validation
+        user exist
+        check for avatar then upload into cloudinary
+        create user object - create entry in db,
+        remove passowrd and refToken from response
+        check user created 
+        return response
+    }
+}
