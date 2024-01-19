@@ -72,3 +72,13 @@ custom api response and error handline{
   - asyncHandler(utils)
   - ApiError(utils) override : class ApiError extended Error 
 }
+user-video model and jwt token{
+  - user : username,email,password,fullName,avatar,coverImage,watchHostory(video),refToken
+  - video : videoFile,title,description,duration,views,isPublished,thumbnail,owner
+    aggregation query on video : npm i mongoose-aggregate-paginate-v2
+    passowrd bcrypt npm i bcrypt
+    webtoken : npm i jsonwebtoken : bearer token
+    encrypt password before store intodb that use userSchema.pre()
+    validating passowrd userSchema.methods.isPasswordCorrect(async(pass)=>return await bcrypt.compare(pass,this.pass))
+    acceess_Token_Expiry < refresh_Token_Expiry in env file
+}
