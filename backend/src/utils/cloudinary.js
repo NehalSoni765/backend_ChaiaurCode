@@ -8,13 +8,13 @@ cloudinary.config({
 });
 
 const uploadOnCloudinary = async (localFilePath) => {
+  if (!localFilePath) return null;
   try {
-    if (!localFilePath) return null;
     //upload file into cloudinary
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
     });
-    console.log("file is uploaded successfully ", response.url);
+    fs.unlinkSync(localFilePath); //remove locally saved temo file
     return response;
   } catch (error) {
     fs.unlinkSync(localFilePath); //remove locally saved temo file

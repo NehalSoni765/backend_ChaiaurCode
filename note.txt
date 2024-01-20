@@ -131,3 +131,54 @@ custom api response and error handline{
         return response
     }
 }
+14] use postman for backend{
+    - register controller check by postman
+    - resolve error putting :  nodemon -r dotenv/config erc/index.js
+}
+15] {
+  - access token : short period token
+  - refresh token : long period token
+  - refresh token : user authenticated then check your token and db token same just give new token
+  login {
+    get user from req,
+    validate User
+    check exist user
+    check password exist using isPasswordCorrect method
+    generate access and refresh token
+    set cookie options
+    send response
+  }
+  logout{
+    middleware{
+      get token from cookies(access) or headers.authorization
+      decode token using jwt verify 
+      get user by decodeToken?._id
+      check user
+      append user into req and next
+    }
+    upadteByIdAndUpdate where set refToken undefined
+    create options for cookie
+    send response with clear Cookie
+  }
+}
+16] access and refresh token{
+  - session storage(access) : short term expiry
+  - refresh : long term expiry
+  - In db store refresh token only
+  - process {
+    > at login time passing user,access,refresh
+    > session expired just hit api of new session storage
+    > user hit api check user cookie refresh and match with db
+    > pass new refresh token to user and store into db 
+  }
+  refreshAccessToken{
+    > take token from cookies.refreshToken || body.refreshToken
+    > decodedToken using jwt verify 
+    > get user from decodedToken id
+    > check user.refreshToken incommingToken 
+    > generate access and refresh token
+    > set cookie options
+    > send response with cookie access,refresh
+  }
+}
+17] update controller for user
