@@ -182,5 +182,47 @@ custom api response and error handline{
   }
 }
 17] update controller for user{
-  - 
+  - change password
+  - get current user
+  - update account details
+  - update avatar
+  - update coverImage
+}
+18] suscriber schema{
+  - subscriber : subscriber(a,b,c,d,e,f),channel(cac,hc,fcc)
+  - channel subscriber find : match channel(ch:cac,sb:a)(ch:hc,sb:c)(ch:cac,sb:c)(ch:fcc,sb:c) schema where filter our channel and count it
+  - channel : help of subscriber count [getname(cac)>ref channel]=getcount of subscribers
+  - subscriber : help of channel count [getname(c)>ref sb]=get count of user subscribed channel
+}
+19] mongodb aggregation pipelines{
+  - mongodb users(),authors(_id,name,doc),books(_id,author_id,name)
+  - database > books> aggregation 
+  - each stage have pipelines and result based on sequence pipelines
+  - [{
+      $lookup(join):{
+        from:"authors", other schema
+        localField:"author_id". book table column
+        foreignField:"_id" author table column
+        as : "author_details" table name (append into books form in [])
+      }
+    },
+    {
+      $addfields:{
+        author_details:{
+          $first : "author_details" //take first object from author_details
+          $arrayElemAt : ["author_details",0]
+        }
+      }
+    }
+  ]
+  mongodb aggregation process {
+  - find username
+  - lookup with ref channel => output subscriber
+  - lookup with ref subscriber => output subscribedTo
+  - addFields with subscriberCount={$size:"$subscribers"},subscribedToCount={$size:"$subscribedTo"},
+    isSubscribed:{$cond:{$if{$in:[userId,"$subscribers.subscriber"]} ,then:true,else:false}}
+  }
+}
+20] sub piplines and routes{
+  - watch history
 }
