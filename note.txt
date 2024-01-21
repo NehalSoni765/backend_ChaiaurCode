@@ -228,7 +228,8 @@ custom api response and error handline{
 }
 22] db models like tweet and playlist{
   - fixes routes and create model of 
-  - playliat
-  - likes
-  - twitter
+  - comment : content,owner(User),video(Video)
+  - likes : comment(Comment),tweet(Tweet), video(Video), likedBy(User)
+  - playlist : name,description,owner(User),video(Video)
+  - tweet : content,video(Video),owner(User)
 }

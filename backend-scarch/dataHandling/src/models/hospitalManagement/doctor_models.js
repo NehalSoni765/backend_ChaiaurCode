@@ -36,7 +36,7 @@ const doctorSchema = mongoose.Schema(
     ],
     worksHoursInHospital: [hospitalSchema],
   },
-  { timeStamp: true }
+  { timestamps: true }
 );
 
 export const Doctor = mongoose.model("Doctor", doctorSchema);

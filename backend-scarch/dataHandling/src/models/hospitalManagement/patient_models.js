@@ -32,7 +32,7 @@ const patientSchema = mongoose.Schema(
       ref: "Hospital",
     },
   },
-  { timeStamp: true }
+  { timestamps: true }
 );
 
 export const Patient = mongoose.model("Patient", patientSchema);
