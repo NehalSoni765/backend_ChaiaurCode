@@ -226,3 +226,9 @@ custom api response and error handline{
 20] sub piplines and routes{
   - watch history
 }
+22] db models like tweet and playlist{
+  - fixes routes and create model of 
+  - playliat
+  - likes
+  - twitter
+}
